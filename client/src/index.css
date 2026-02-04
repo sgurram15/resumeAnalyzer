@@ -63,8 +63,8 @@
   --secondary-foreground: oklch(0.4 0.015 65);
   --muted: oklch(0.967 0.001 286.375);
   --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
+  --accent: oklch(0.623 0.214 259.815);
+  --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.92 0.004 286.32);
@@ -119,6 +119,14 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -158,6 +166,29 @@
   .flex {
     min-height: 0;
     min-width: 0;
+  }
+
+  /* Resume Screener Custom Components */
+  .card-elevated {
+    @apply bg-card text-card-foreground rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .input-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+
+  /* Badge score styles moved to inline styles in Results.tsx for flexibility */
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent via-blue-500 to-purple-500 bg-clip-text text-transparent;
+  }
+
+  .upload-zone {
+    @apply border-2 border-dashed border-border rounded-lg p-8 text-center transition-colors hover:border-accent hover:bg-accent/5;
+  }
+
+  .upload-zone.active {
+    @apply border-accent bg-accent/10;
   }
 
   @media (min-width: 640px) {
