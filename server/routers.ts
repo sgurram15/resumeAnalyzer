@@ -6,6 +6,7 @@ import { z } from "zod";
 import { createScreening, getUserScreenings, getScreeningById, createResume, getScreeningResumes, getScreeningCandidateScores } from "./db";
 import { storagePut } from "./storage";
 import { nanoid } from "nanoid";
+import { multiAgentScreeningRouter } from "./routers-multi-agent";
 
 export const appRouter = router({
   system: systemRouter,
@@ -21,6 +22,9 @@ export const appRouter = router({
   }),
 
   screening: router({
+    screenCandidates: multiAgentScreeningRouter._def.procedures.screenCandidates,
+    getDetailedScore: multiAgentScreeningRouter._def.procedures.getDetailedScore,
+    updateWeights: multiAgentScreeningRouter._def.procedures.updateWeights,
     create: protectedProcedure
       .input(
         z.object({

@@ -3,6 +3,8 @@ import { scoreResume } from "./screening";
 
 describe("Resume Screening", () => {
   it("should score a resume against job requirements", async () => {
+    // Increase timeout for LLM calls
+    vi.setConfig({ testTimeout: 15000 });
     const jobDescription = `
       We are looking for a Senior Software Engineer with:
       - 5+ years of experience in JavaScript/TypeScript
@@ -50,6 +52,7 @@ describe("Resume Screening", () => {
   });
 
   it("should handle empty resume text gracefully", async () => {
+    vi.setConfig({ testTimeout: 15000 });
     const jobDescription = "Senior Software Engineer";
     const resumeText = "";
 
